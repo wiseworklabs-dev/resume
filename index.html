@@ -332,20 +332,18 @@ ul.pts em { color: var(--muted); font-style: italic; }
   </header>
 
   <p class="summary en">
-    I came to engineering from business operations — I ran HR at a shipping company for two years before I
-    wrote production code, and I still design systems the way an operator would: around the handoffs, the
-    messy parts, and the people who have to trust the output. At Baemin I own my team's infrastructure, and
-    most recently I built and shipped the <strong>agent pipeline that now runs our spec-to-QA process</strong>,
-    because everyone had adopted AI individually and no one owned whether the outputs connected. I believe the
-    best engineering solves the problem without writing code.
+    I ran HR at a shipping company for two years before I wrote production code. I still design systems the
+    way an operator would: around the handoffs, the messy parts, and the people who have to trust the output.
+    At Baemin I own my team's infrastructure. Most recently I built the <strong>agent pipeline that now runs
+    our spec-to-QA process</strong>, because everyone had adopted AI on their own and no one owned whether the
+    outputs connected. The best engineering solves the problem without writing code.
   </p>
   <p class="summary ko">
-    저는 비즈니스 운영에서 개발로 넘어왔습니다. 프로덕션 코드를 처음 쓰기 2년 전까지 해운사에서 인사 실무를
-    했고, 지금도 시스템을 운영자의 눈으로 설계합니다 — 핸드오프, 지저분한 구간, 그리고 그 결과물을 신뢰해야
-    하는 사람들을 중심에 두고요. 배달의민족에서 팀 인프라를 전담하고 있으며, 최근에는
-    <strong>기획–개발–QA 프로세스를 실제로 운영하는 에이전트 파이프라인</strong>을 만들어 팀에 붙였습니다.
-    각자 AI를 쓰고 있었지만 그 출력들이 서로 이어지는지는 아무도 보고 있지 않았기 때문입니다. 최고의 개발은
-    코드 작업 없이 해결하는 것이라고 믿습니다.
+    프로덕션 코드를 쓰기 전에 해운사에서 2년간 인사 실무를 했습니다. 지금도 시스템을 운영자의 눈으로
+    설계합니다. 핸드오프, 지저분한 구간, 그 결과물을 신뢰해야 하는 사람들을 중심에 두고요. 배달의민족에서
+    팀 인프라를 맡고 있습니다. 최근에는 <strong>기획·개발·QA 프로세스를 실제로 운영하는 에이전트
+    파이프라인</strong>을 만들어 팀에 붙였습니다. 각자 AI를 쓰는데 그 결과물이 서로 이어지는지는 아무도
+    보지 않았기 때문입니다. 최고의 개발은 코드 작업 없이 해결하는 것이라고 믿습니다.
   </p>
 
   <section>
@@ -454,10 +452,16 @@ ul.pts em { color: var(--muted); font-style: italic; }
             <span class="proj-meta ko">상시</span>
           </div>
           <ul class="pts en">
-            <li>Introduced OpenTelemetry logging (unified request tracing across services); migrated EC2 → Kubernetes; Kafka connector setup and stabilization; SNS/SQS hardening (SDK upgrade, security config, cross-account wiring); Spring Boot 2.7 → 3.4 with the full JVM/Kotlin/Gradle upgrade.</li>
+            <li>Introduced OpenTelemetry logging: unified request tracing across services.</li>
+            <li>Migrated operations from EC2 to Kubernetes. Kafka connector setup and stabilization.</li>
+            <li>SNS/SQS hardening: SDK upgrade, security config, cross-account wiring.</li>
+            <li>Spring Boot <span class="num">2.7 → 3.4</span> with the full JVM/Kotlin/Gradle upgrade.</li>
           </ul>
           <ul class="pts ko">
-            <li>OpenTelemetry 기반 로깅 도입(서버 간 통합 request tracing), EC2 → 쿠버네티스 운영 환경 전환, Kafka 커넥터 설정 및 운영 안정화, SNS/SQS 설정·보안 개선(AWS SDK 버전 업, 타 그룹 간 연결), Spring Boot 2.7 → 3.4 및 JVM·Kotlin·Gradle 전면 버전 업.</li>
+            <li>OpenTelemetry 기반 로깅 도입: 서버 간 통합 request tracing.</li>
+            <li>EC2에서 쿠버네티스로 운영 환경 전환. Kafka 커넥터 설정 및 운영 안정화.</li>
+            <li>SNS/SQS 설정·보안 개선: AWS SDK 버전 업, 타 그룹 간 연결.</li>
+            <li>Spring Boot <span class="num">2.7 → 3.4</span> 및 JVM·Kotlin·Gradle 전면 버전 업.</li>
           </ul>
         </div>
       </div>
