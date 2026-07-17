@@ -208,6 +208,11 @@ ul.pts li::before {
   width: 4px; height: 1px; background: var(--muted); opacity: .7;
 }
 ul.pts strong { color: var(--ink); font-weight: 600; }
+.result {
+  margin-top: 7px; padding-left: 15px; font-family: var(--mono); font-size: 12.5px;
+  color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.55;
+}
+.result .sep { opacity: .4; margin: 0 5px; }
 ul.pts em { color: var(--muted); font-style: italic; }
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: .94em; }
 
@@ -280,6 +285,7 @@ ul.pts em { color: var(--muted); font-style: italic; }
   ul.pts { gap: 1px; margin-top: 3px; }
   ul.pts li { font-size: 8.7pt; line-height: 1.36; max-width: none; padding-left: 11px; }
   ul.pts li::before { top: 6.5px; width: 3.5px; }
+  .result { font-size: 8.3pt; margin-top: 4px; padding-left: 11px; line-height: 1.4; }
   .rows { gap: 2px; }
   .datarow { grid-template-columns: 86px 1fr; gap: 14px; }
   .datarow dt { font-size: 7.8pt; }
@@ -304,8 +310,7 @@ ul.pts em { color: var(--muted); font-style: italic; }
 
   <header class="masthead">
     <div class="portrait">
-      <!-- photo.jpg goes here; initials show until it exists -->
-      <span class="initials">YC</span>
+      <img src="photo.jpg" alt="Yongseok Choi" width="480" height="480">
     </div>
     <div>
       <h1>Yongseok Choi <span class="alt">최용석</span></h1>
@@ -362,19 +367,23 @@ ul.pts em { color: var(--muted); font-style: italic; }
             <span class="proj-meta ko">n8n + Claude · 팀에서 운영 중</span>
           </div>
           <ul class="pts en">
-            <li>Diagnosed the real gap: PM, engineers, and QA had all adopted AI individually, but <strong>no one owned whether the outputs connected</strong> — every step was locally good and the process still leaked.</li>
-            <li>Built the seam on our internal n8n with Claude skills per step: reads the PRD and the codebase together, emits a tech spec, a first-pass PRD review, and an explicit list of open questions; updates the checklist and moves the Jira ticket on feature push.</li>
-            <li>Generates QA docs scoped to the <strong>actual blast radius</strong> of the code change; gaps found in QA count as code defects and feed back as improvement proposals. The tech spec self-updates at development end.</li>
-            <li>An <strong>observer holds full context across every document</strong> and reports what is blocked, what is slipping, and what the code or QA left out.</li>
-            <li>Most of my effort went into making tech specs legible to non-engineers — the artifact a PM actually reads, trusts, and acts on. I wired together tools we already had rather than building a new system.</li>
+            <li>PM, engineers, and QA each used AI alone. <strong>No one owned the seams between them.</strong> I built the layer that does.</li>
+            <li>Reads the PRD against the codebase → writes the tech spec, reviews the PRD, lists open questions.</li>
+            <li>Feature push → updates the checklist, moves the Jira ticket.</li>
+            <li>Writes QA docs scoped to the change's <strong>real blast radius</strong>. QA gaps route back as code-fix proposals.</li>
+            <li>An <strong>observer</strong> holds context across every document and flags blockers, slippage, and missed coverage.</li>
+            <li>Hardest part was tech specs a PM trusts and acts on — I was in HR before I was an engineer, so I know where non-engineers lose the thread.</li>
           </ul>
+          <p class="result en">In production use by the team<span class="sep">·</span>built on existing tools, no new system</p>
           <ul class="pts ko">
-            <li>진짜 문제를 짚었습니다. 기획·개발·QA 모두 각자 AI를 쓰고 있었지만, <strong>그 출력들이 서로 이어지는지는 아무도 관리하지 않았습니다</strong> — 각 단계는 국소적으로 훌륭한데 프로세스 전체는 여전히 샜습니다.</li>
-            <li>사내 n8n으로 오케스트레이션하고 단계마다 Claude 스킬을 붙여 이음매를 만들었습니다. 기획문서와 코드를 함께 읽고 테크스펙, 기획문서 1차 검토, 논의 필요사항을 생성하며, feature 푸시 시 체크리스트를 갱신하고 지라 티켓 상태를 옮깁니다.</li>
-            <li>코드 변경의 <strong>실제 영향범위</strong>에 맞춘 QA 문서를 생성합니다. QA에서 누락이 발견되면 그것을 코드 결함으로 보고 개선을 제안하며, 개발이 끝나면 테크스펙이 스스로 갱신됩니다.</li>
-            <li><strong>옵저버가 모든 문서를 가로질러 전체 컨텍스트를 들고</strong> 무엇이 막혔는지, 일정이 밀리는지, 코드나 QA에서 빠진 게 있는지 보고합니다.</li>
-            <li>가장 많은 공을 들인 곳은 테크스펙을 비개발자가 읽을 수 있게 만드는 일이었습니다 — 기획자가 실제로 읽고, 신뢰하고, 행동하는 문서. 새 시스템을 짓지 않고 이미 있던 도구를 엮었습니다.</li>
+            <li>기획·개발·QA가 각자 AI를 썼지만 <strong>그 사이 이음매는 아무도 보지 않았습니다.</strong> 그 레이어를 만들었습니다.</li>
+            <li>기획문서와 코드를 함께 읽고 → 테크스펙 작성, 기획문서 1차 검토, 논의 필요사항 정리.</li>
+            <li>feature 푸시 → 체크리스트 갱신, 지라 티켓 상태 변경.</li>
+            <li>코드 변경의 <strong>실제 영향범위</strong>에 맞춘 QA 문서 생성. QA 누락은 코드 결함으로 보고 개선 제안.</li>
+            <li><strong>옵저버</strong>가 전체 문서를 가로질러 컨텍스트를 들고 블로커·일정 지연·누락을 보고합니다.</li>
+            <li>가장 어려웠던 건 기획자가 신뢰하고 행동하는 테크스펙 — 개발자이기 전에 인사 실무자였기에 비개발자가 어디서 막히는지 압니다.</li>
           </ul>
+          <p class="result ko">팀에서 실제 운영 중<span class="sep">·</span>기존 도구를 엮어 구축, 새 시스템 없음</p>
         </div>
 
         <div class="proj">
@@ -384,15 +393,17 @@ ul.pts em { color: var(--muted); font-style: italic; }
             <span class="proj-meta">Mar – Sep 2025</span>
           </div>
           <ul class="pts en">
-            <li>Infra, backend, and frontend were tightly coupled; service dependencies blocked scaling and slowed incident response. Redesigned the architecture from the infra layer up — service separation, deploy restructuring, security review to lock the target.</li>
-            <li>Overhauled the legacy auth filter (<strong><span class="num">50%</span> less code and call paths</strong>); handled cross-domain cookie, firewall, and permission issues; owned infra config and delivered a <strong>zero-incident migration</strong>.</li>
-            <li>Result: <strong><span class="num">20%</span> lower backend CPU/memory</strong>, <span class="num">₩500K</span>/month infra savings. Presented on the Woowa tech blog and at company townhall.</li>
+            <li>Infra, backend, and frontend were tightly coupled — scaling and incident response both suffered.</li>
+            <li>Redesigned from the infra layer up: service separation, deploy restructuring, legacy auth filter overhaul.</li>
+            <li>Owned infra config through the migration. Written up on the Woowa tech blog and presented at townhall.</li>
           </ul>
+          <p class="result en"><span class="num">20%</span> lower backend CPU/memory<span class="sep">·</span><span class="num">50%</span> less auth code<span class="sep">·</span><span class="num">₩500K</span>/mo saved<span class="sep">·</span>zero-incident migration</p>
           <ul class="pts ko">
-            <li>인프라·백엔드·프론트가 강결합되어 서비스 간 의존성이 확장과 장애 대응을 막고 있었습니다. 인프라 레벨부터 아키텍처를 재설계했습니다 — 서비스 분리, 배포 구조 재정비, 보안 검토를 통한 구조 확정.</li>
-            <li>레거시 인증필터를 대규모 개편했고(<strong>코드량 및 호출로직 <span class="num">50%</span> 감소</strong>), 크로스 도메인 쿠키·방화벽·권한 이슈를 처리했으며, 인프라 설정을 전담해 <strong>무사고 배포</strong>를 달성했습니다.</li>
-            <li>결과: <strong>백엔드 CPU·메모리 <span class="num">20%</span> 절감</strong>, 인프라 비용 월 <span class="num">50만원</span> 절약. 우아한형제들 기술블로그와 사내 타운홀에서 발표했습니다.</li>
+            <li>인프라·백엔드·프론트가 강결합되어 확장과 장애 대응이 모두 막혀 있었습니다.</li>
+            <li>인프라 레벨부터 재설계: 서비스 분리, 배포 구조 재정비, 레거시 인증필터 개편.</li>
+            <li>인프라 설정을 전담해 이관 완료. 기술블로그와 사내 타운홀에서 발표.</li>
           </ul>
+          <p class="result ko">백엔드 CPU·메모리 <span class="num">20%</span> 절감<span class="sep">·</span>인증 코드 <span class="num">50%</span> 감소<span class="sep">·</span>월 <span class="num">50만원</span> 절약<span class="sep">·</span>무사고 배포</p>
         </div>
 
         <div class="proj">
@@ -402,15 +413,17 @@ ul.pts em { color: var(--muted); font-style: italic; }
             <span class="proj-meta">Feb – Sep 2024</span>
           </div>
           <ul class="pts en">
-            <li>No quantitative view of approver workload or efficiency, so productivity could not be compared and policy changes could not be validated with data.</li>
-            <li>Normalized approval events into an aggregate data model and built the pipeline measuring cycle time, throughput, and bottlenecks. Designed the metrics around working-hour and policy conditions <strong>drawn from my own HR domain experience</strong> — the reason the numbers meant anything to the business.</li>
-            <li>Published as a case in <em>Woowa Backend Engineering</em> (『우아한 백엔드 개발』) and on the Woowa tech blog.</li>
+            <li>No quantitative view of approver workload — policy changes couldn't be validated with data.</li>
+            <li>Normalized approval events into an aggregate model; built the pipeline for cycle time, throughput, and bottlenecks.</li>
+            <li>Designed the metrics <strong>from my own HR domain experience</strong> — why the numbers meant anything to the business.</li>
           </ul>
+          <p class="result en">Featured in <em>Woowa Backend Engineering</em> (『우아한 백엔드 개발』)<span class="sep">·</span>Woowa tech blog</p>
           <ul class="pts ko">
-            <li>승인 담당자의 업무량과 처리 효율에 대한 정량 지표가 없어 개인·조직 단위 생산성을 비교할 수 없었고, 정책 변경 효과를 데이터로 검증할 수도 없었습니다.</li>
-            <li>승인 이벤트를 수집·정규화해 Aggregate 데이터 모델을 설계하고, 소요 시간·처리량·병목을 측정하는 집계 파이프라인을 구현했습니다. <strong>인사 도메인 경험을 바탕으로</strong> 근무시간·정책 조건을 반영해 지표를 설계했고, 그게 이 숫자가 비즈니스에 의미를 갖게 된 이유입니다.</li>
-            <li>이 사례는 『우아한 백엔드 개발』 서적과 기술블로그에 수록되었습니다.</li>
+            <li>승인 업무량에 대한 정량 지표가 없어 정책 변경 효과를 데이터로 검증할 수 없었습니다.</li>
+            <li>승인 이벤트를 정규화해 Aggregate 모델 설계, 소요시간·처리량·병목 집계 파이프라인 구현.</li>
+            <li><strong>인사 도메인 경험을 바탕으로</strong> 근무시간·정책 조건을 반영해 지표 설계 — 그게 이 숫자가 의미를 갖게 된 이유입니다.</li>
           </ul>
+          <p class="result ko">『우아한 백엔드 개발』 서적 수록<span class="sep">·</span>기술블로그 게재</p>
         </div>
 
         <div class="proj">
@@ -420,15 +433,17 @@ ul.pts em { color: var(--muted); font-style: italic; }
             <span class="proj-meta">Apr – Aug 2023</span>
           </div>
           <ul class="pts en">
-            <li>Team's first external SaaS integration, with a hard requirement that outside failures never propagate into internal approval and contract transactions.</li>
-            <li>Event-driven async architecture on internal CDC events, fully separating business logic from integration logic; per-event state, failure-typed retry pipelines, scheduler-based reprocessing with alerting.</li>
-            <li>Internal processes stayed up through external outages. <strong>Became the team's standard architecture</strong> for external integrations and the base for later ones.</li>
+            <li>Team's first external SaaS integration. Hard requirement: outside failures must never reach internal approval and contract transactions.</li>
+            <li>Event-driven async on internal CDC events — business logic fully separated from integration logic.</li>
+            <li>Per-event state, failure-typed retry pipelines, scheduler-based reprocessing with alerting.</li>
           </ul>
+          <p class="result en">Zero internal downtime through external outages<span class="sep">·</span>became the team's standard for every integration since</p>
           <ul class="pts ko">
-            <li>팀 내 최초의 외부 SaaS 연동이었고, 외부 장애가 내부 승인·계약 트랜잭션에 절대 전파되지 않아야 한다는 강한 요구가 있었습니다.</li>
-            <li>내부 CDC 이벤트를 활용한 이벤트 드리븐 비동기 아키텍처를 설계해 정규 비즈니스 로직과 연동 로직을 완전히 분리했고, 이벤트별 상태 관리·실패 유형별 재처리 파이프라인·스케줄러 기반 재처리와 알람을 구현했습니다.</li>
-            <li>외부 장애 상황에서도 내부 프로세스가 무중단으로 유지되었습니다. <strong>팀의 외부 연동 표준 아키텍처</strong>가 되어 이후 연동의 기반이 되었습니다.</li>
+            <li>팀 최초의 외부 SaaS 연동. 외부 장애가 내부 승인·계약 트랜잭션에 절대 전파되면 안 된다는 조건.</li>
+            <li>내부 CDC 이벤트 기반 이벤트 드리븐 비동기 구조 — 정규 로직과 연동 로직 완전 분리.</li>
+            <li>이벤트별 상태 관리, 실패 유형별 재처리 파이프라인, 스케줄러 재처리와 알람.</li>
           </ul>
+          <p class="result ko">외부 장애 중에도 내부 무중단<span class="sep">·</span>이후 팀의 모든 외부 연동 표준 아키텍처</p>
         </div>
 
         <div class="proj">
@@ -455,15 +470,17 @@ ul.pts em { color: var(--muted); font-style: italic; }
         <p class="title en">Backend Part Lead</p>
         <p class="title ko">백엔드 파트 리드</p>
         <ul class="pts en">
-          <li>Operated the Dodo Point rewards service: <strong><span class="num">10M+</span> members, <span class="num">100K+</span> daily transactions</strong>.</li>
-          <li>Built the dormant-member archival, sync, and purge pipeline — <strong><span class="num">10M</span> archived, <span class="num">10M</span> synced, <span class="num">4M</span> purged</strong>. Tuned Celery group parallelism and ignore-result; Python migration scripts with multiprocessing.</li>
-          <li>Rewrote bulk message targeting extraction: <strong><span class="num">60s+</span> → under <span class="num">8s</span></strong> (Postgres). Security work across store, mobile, and landing channels: consent logic, dormant-member archival, purge, restore.</li>
+          <li>Ran the Dodo Point rewards service at <strong><span class="num">10M+</span> members, <span class="num">100K+</span> daily transactions</strong>.</li>
+          <li>Built the dormant-member archival, sync, and purge pipeline. Tuned Celery group parallelism; Python migration scripts with multiprocessing.</li>
+          <li>Rewrote the bulk message targeting query (Postgres). Consent and privacy logic across store, mobile, and landing channels.</li>
         </ul>
+        <p class="result en">Targeting query <span class="num">60s+ → under 8s</span><span class="sep">·</span><span class="num">10M</span> archived, <span class="num">10M</span> synced, <span class="num">4M</span> purged</p>
         <ul class="pts ko">
-          <li>도도포인트 적립 서비스를 운영했습니다 — <strong>총 회원 <span class="num">1,000만</span> 이상, 일간 적립 <span class="num">10만</span>건 이상</strong>.</li>
-          <li>휴면회원 분리보관·싱크·파기 배치 파이프라인을 구축·운영했습니다 — <strong>분리보관 <span class="num">1,000만</span>, 싱크 <span class="num">1,000만</span>, 파기 <span class="num">400만</span>건</strong>. Celery group 병렬처리와 ignore-result 설정을 튜닝하고, 멀티프로세싱 기반 Python 이관 스크립트를 작성했습니다.</li>
-          <li>대량 메시지 대상자 추출 쿼리를 개선했습니다: <strong><span class="num">1분</span> 이상 → <span class="num">8초</span> 이내</strong> (Postgres). 스토어앱·모바일앱·랜딩 등 여러 인입 채널의 필수/선택 동의약관 로직과 휴면회원 분리보관·파기·복원 보안 작업을 수행했습니다.</li>
+          <li><strong>총 회원 <span class="num">1,000만</span>, 일간 적립 <span class="num">10만</span>건</strong> 규모의 도도포인트 적립 서비스 운영.</li>
+          <li>휴면회원 분리보관·싱크·파기 배치 파이프라인 구축. Celery group 병렬처리 튜닝, 멀티프로세싱 Python 이관 스크립트.</li>
+          <li>대량 메시지 대상자 추출 쿼리 개선(Postgres). 인입 채널별 동의약관 및 개인정보 로직.</li>
         </ul>
+        <p class="result ko">대상자 추출 <span class="num">1분+ → 8초 이내</span><span class="sep">·</span>분리보관 <span class="num">1,000만</span>, 싱크 <span class="num">1,000만</span>, 파기 <span class="num">400만</span>건</p>
       </div>
     </article>
 
@@ -474,15 +491,17 @@ ul.pts em { color: var(--muted); font-style: italic; }
         <p class="title en">Full-stack Engineer</p>
         <p class="title ko">풀스택 엔지니어</p>
         <ul class="pts en">
-          <li><strong>Shipped the AI Human all-in-one template solo</strong> — design, DB, backend, frontend, deployment, and operations. Chatbot, STT, AI and speech models, and UI configured dynamically from admin settings. Released web, mobile, and tablet, verified across iOS and Safari.</li>
-          <li>Scaled the relay server under heavy traffic: dual redundancy, DB replica set, disk and capacity changes, load balancing; redesigned local caching and master-DB operation so instances scale out cleanly.</li>
-          <li>Cut preview render <strong>from <span class="num">30s</span> to under <span class="num">7s</span> (<span class="num">4–5×</span>)</strong> for 400 characters by moving from video rendering to canvas image sequencing. Added gesture support to the web SDK with memory-efficient image loading and a reusable audio object for iOS.</li>
+          <li><strong>Shipped the AI Human all-in-one template solo</strong> — design, DB, backend, frontend, deploy, ops. Chatbot, STT, AI and speech models all configured from admin. Released web, mobile, and tablet.</li>
+          <li>Scaled the relay server under heavy traffic: dual redundancy, DB replica set, load balancing, master-DB caching redesign.</li>
+          <li>Rebuilt preview rendering from video to canvas image sequencing. Added gesture support to the web SDK.</li>
         </ul>
+        <p class="result en">Preview render <span class="num">30s → under 7s (4–5×)</span><span class="sep">·</span>3 platforms shipped by one engineer</p>
         <ul class="pts ko">
-          <li><strong>AI 휴먼 올인원 템플릿을 혼자 출시했습니다</strong> — 설계, DB, 백엔드, 프론트, 배포, 운영까지. 챗봇·STT·AI 모델·발화 모델·UI가 어드민 설정값에 따라 동적으로 구성됩니다. 웹·모바일·태블릿 3개 버전으로 출시하고 iOS·Safari 등 호환성을 검증했습니다.</li>
-          <li>대용량 트래픽이 발생하는 중계서버를 확장했습니다: 이중화, DB replicaset, disktype 변경 및 용량 증설, 로드밸런싱. 로컬 DB 캐싱과 마스터 DB 운영을 재설계해 인스턴스를 쉽게 확장할 수 있게 만들었습니다.</li>
-          <li>미리보기 렌더링을 <strong>400자 기준 <span class="num">30초</span> → <span class="num">7초</span> 이내(<span class="num">4~5배</span>)</strong>로 개선했습니다. 비디오 렌더링에서 canvas 이미지 시퀀싱으로 전환했고, 웹 SDK에 제스처 기능을 추가하며 메모리 효율적 이미지 로딩과 iOS 대응 audio 객체 재활용을 구현했습니다.</li>
+          <li><strong>AI 휴먼 올인원 템플릿을 혼자 출시</strong> — 설계·DB·백엔드·프론트·배포·운영 전부. 챗봇·STT·AI 모델이 어드민 설정에 따라 동적 구성. 웹·모바일·태블릿 3개 버전.</li>
+          <li>대용량 트래픽 중계서버 확장: 이중화, DB replicaset, 로드밸런싱, 마스터 DB 캐싱 재설계.</li>
+          <li>미리보기 렌더링을 비디오에서 canvas 이미지 시퀀싱으로 재구축. 웹 SDK에 제스처 기능 추가.</li>
         </ul>
+        <p class="result ko">미리보기 <span class="num">30초 → 7초 이내 (4~5배)</span><span class="sep">·</span>3개 플랫폼을 혼자 출시</p>
       </div>
     </article>
 
@@ -493,13 +512,17 @@ ul.pts em { color: var(--muted); font-style: italic; }
         <p class="title en">Full-stack Engineer, Team Lead</p>
         <p class="title ko">풀스택 엔지니어, 팀장</p>
         <ul class="pts en">
-          <li>Designed and built a customizable ERP HR system (Spring, JPA, Oracle, React) — HR, org, and evaluation modules from planning through backend. Dynamic-query compound assignment; slow-query remediation and index review; PL/SQL approval-line logic. <strong>Rated top performer</strong> for the employee-group feature enabling temporary employee status.</li>
-          <li>MSA transition TF: Spring Cloud stack (RabbitMQ, API Gateway, Eureka, Config, Feign, Sleuth); event storming across HR, payroll, and accounting to define aggregates; hexagonal skeleton and test coverage.</li>
+          <li>Built a customizable ERP HR system (Spring, JPA, Oracle, React) — HR, org, and evaluation modules from planning through backend.</li>
+          <li>Dynamic-query compound assignment; slow-query remediation and index review; PL/SQL approval-line logic.</li>
+          <li>MSA transition TF: Spring Cloud stack, event storming across HR/payroll/accounting, hexagonal skeleton.</li>
         </ul>
+        <p class="result en">Top performance rating for the employee-group feature</p>
         <ul class="pts ko">
-          <li>커스터마이징 가능한 ERP 인사 시스템을 설계·개발했습니다(Spring, JPA, Oracle, React) — 인사·조직·평가 모듈을 기획부터 백엔드까지. 동적 쿼리를 활용한 복합발령 기능, 전체 Slow Query 수정 및 인덱싱 검수, PL/SQL 결재선 조회 로직. 임직원 Temporary status를 가능하게 한 사원그룹 기능으로 <strong>최우수 평가</strong>를 받았습니다.</li>
-          <li>MSA 아키텍처 전환 TF: Spring Cloud 스택(RabbitMQ, API Gateway, Eureka, Config, Feign, Sleuth), 인사·급여·회계 이벤트 스토밍을 통한 애그리게이트 구분, 헥사고날 기반 스켈레톤과 테스트코드.</li>
+          <li>커스터마이징 가능한 ERP 인사 시스템 설계·개발(Spring, JPA, Oracle, React) — 인사·조직·평가 모듈을 기획부터 백엔드까지.</li>
+          <li>동적 쿼리 복합발령 기능, 전체 Slow Query 수정 및 인덱싱 검수, PL/SQL 결재선 조회 로직.</li>
+          <li>MSA 전환 TF: Spring Cloud 스택, 인사·급여·회계 이벤트 스토밍, 헥사고날 스켈레톤.</li>
         </ul>
+        <p class="result ko">사원그룹 기능으로 최우수 평가</p>
       </div>
     </article>
 
@@ -510,13 +533,15 @@ ul.pts em { color: var(--muted); font-style: italic; }
         <p class="title en">Human Resources</p>
         <p class="title ko">인사팀</p>
         <ul class="pts en">
-          <li>Ran HR operations end to end — recruiting, payroll, personnel; introduced an IT recruiting platform and led the ERP evaluation-system improvement effort. <em>This is the operations experience my engineering still runs on.</em></li>
-          <li>Represented the company in the shipping-logistics blockchain consortium led by Samsung SDS and the Korea Customs Service; <strong>won the internal idea award</strong> for a container and vessel repair-record platform shared across repair vendors, carriers, and insurers.</li>
+          <li>Ran HR end to end — recruiting, payroll, personnel. Introduced an IT recruiting platform; led the ERP evaluation-system improvement. <em>This is the operations experience my engineering still runs on.</em></li>
+          <li>Company representative in the shipping-logistics blockchain consortium led by Samsung SDS and the Korea Customs Service.</li>
         </ul>
+        <p class="result en">Internal idea award — shared repair-record platform for vendors, carriers, and insurers</p>
         <ul class="pts ko">
-          <li>인사 업무 전반을 담당했습니다 — 채용·급여·인사 운영, IT 채용 프로그램 도입, ERP 평가시스템 개선 주도. <em>지금의 제 개발이 딛고 서 있는 운영 경험입니다.</em></li>
-          <li>삼성SDS와 관세청이 주도한 해운물류 블록체인 컨소시엄에 회사 대표로 참여했고, 컨테이너·선박 수리 기록을 수리업체·선사·보험사가 공유하는 플랫폼 아이디어로 <strong>사내 아이디어 대상</strong>을 받았습니다.</li>
+          <li>인사 업무 전반 — 채용·급여·인사 운영. IT 채용 프로그램 도입, ERP 평가시스템 개선 주도. <em>지금의 제 개발이 딛고 서 있는 운영 경험입니다.</em></li>
+          <li>삼성SDS·관세청 주도 해운물류 블록체인 컨소시엄에 회사 대표로 참여.</li>
         </ul>
+        <p class="result ko">사내 아이디어 대상 — 수리업체·선사·보험사 공유 수리기록 플랫폼</p>
       </div>
     </article>
   </section>
@@ -547,15 +572,19 @@ ul.pts em { color: var(--muted); font-style: italic; }
         <p class="title en">Operated solo, end to end</p>
         <p class="title ko">혼자서 전 과정 운영</p>
         <ul class="pts en">
-          <li>Listed the rooms of my three-room apartment individually and they barely booked. Looked at why: single-room supply in the area was saturated.</li>
-          <li><strong>Changed the product.</strong> Rented the whole unit and repositioned it around the one thing neighboring listings could not offer — no landlord downstairs, so parties and family gatherings were allowed — then furnished it to make that positioning real. Split pricing: <span class="num">₩150,000</span>/night for week-plus stays, <span class="num">₩300,000</span>/night for single nights bundled with services.</li>
-          <li><strong>Superhost in one month.</strong> Peak revenue over <strong><span class="num">₩4.5M</span>/month against <span class="num">₩150,000</span> monthly rent</strong> (deposit-heavy Korean lease). Ended by COVID and lease expiry. I cleaned it myself every day.</li>
+          <li>Listed rooms individually — barely booked. Single-room supply in the area was saturated.</li>
+          <li><strong>Changed the product.</strong> Rented the whole unit, repositioned on the one thing neighbors couldn't offer — no landlord downstairs, so parties and family gatherings were allowed — and furnished it to match.</li>
+          <li>Two-tier pricing: <span class="num">₩150K</span>/night for week-plus stays, <span class="num">₩300K</span>/night single nights with services bundled.</li>
+          <li>Ran 7 months until COVID and lease expiry. I cleaned it myself every day.</li>
         </ul>
+        <p class="result en">Superhost in <span class="num">1 month</span><span class="sep">·</span>peak <span class="num">₩4.5M</span>/month on <span class="num">₩150K</span> rent (<span class="num">30×</span>)</p>
         <ul class="pts ko">
-          <li>3룸 집의 방을 하나씩 올렸는데 예약이 거의 없었습니다. 이유를 봤더니 주변에 방 단위 임대 공급이 포화 상태였습니다.</li>
-          <li><strong>제품을 바꿨습니다.</strong> 집 전체를 렌트하고, 주변 매물이 줄 수 없는 단 하나 — 1층에 집주인이 없어 파티와 가족 모임이 가능하다는 점 — 으로 포지셔닝을 옮긴 뒤, 그 포지션이 실제가 되도록 인테리어와 집기를 갖췄습니다. 가격은 이원화했습니다: 1주일 이상 장기 <span class="num">15만원</span>/박, 하루 단기 <span class="num">30만원</span>/박에 여러 용품과 서비스 번들.</li>
-          <li><strong>한 달 만에 슈퍼호스트.</strong> 최고 월 수입 <strong><span class="num">450만원</span> 이상, 월 임대료 <span class="num">15만원</span> 대비</strong> (보증금 1억의 한국식 계약). 코로나와 계약 종료로 끝났습니다. 매일 직접 청소했습니다.</li>
+          <li>방을 하나씩 올렸으나 예약이 거의 없었습니다. 주변에 방 단위 임대 공급이 포화 상태였습니다.</li>
+          <li><strong>제품을 바꿨습니다.</strong> 집 전체를 렌트하고, 주변이 줄 수 없는 단 하나 — 1층에 집주인이 없어 파티·가족 모임이 가능 — 로 포지셔닝을 옮긴 뒤 인테리어와 집기로 그 포지션을 실제로 만들었습니다.</li>
+          <li>가격 이원화: 1주일 이상 장기 <span class="num">15만원</span>/박, 하루 단기 <span class="num">30만원</span>/박에 용품·서비스 번들.</li>
+          <li>코로나와 계약 종료까지 7개월 운영. 매일 직접 청소했습니다.</li>
         </ul>
+        <p class="result ko"><span class="num">1개월</span> 만에 슈퍼호스트<span class="sep">·</span>최고 월 <span class="num">450만원</span>, 임대료 <span class="num">15만원</span> 대비 <span class="num">30배</span></p>
       </div>
     </article>
   </section>
